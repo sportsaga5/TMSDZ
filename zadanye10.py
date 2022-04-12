@@ -1,53 +1,41 @@
 # задание 1 (создание калькулятора)
-def division():   # деление
+def division(value):   # деление
     try:
-        first_value = int(input('Введите первое число: '))
-        second_value = int(input('Введите второе число: '))
-        result = first_value / second_value
+        result = value[0] / value[1]
         print(f'Результат деления: {result}')
     except ZeroDivisionError as error:
         print(error)
-    except ValueError as error:
-        print('Неверный тип данных!')
 
-def multiplication():  # умножение
-    try:
-        first_value = int(input('Введите первое число: '))
-        second_value = int(input('Введите второе число: '))
-        result = first_value * second_value
-        print(f'Результат умножения: {result}')
-    except ValueError as error:
-        print('Неверный тип данных!')
+def multiplication(value):  # умножение
+    result = value[0] * value[1]
+    print(f'Результат умножения: {result}')
 
-def summation():  # сложение
-    try:
-        first_value = int(input('Введите первое число: '))
-        second_value = int(input('Введите второе число: '))
-        result = first_value + second_value
-        print(f'Результат сложения: {result}')
-    except ValueError as error:
-        print('Неверный тип данных!')
+def summation(value):  # сложение
+    result = value[0] + value[1]
+    print(f'Результат сложения: {result}')
 
-def subtraction():   # вычитание
-    try:
-        first_value = int(input('Введите первое число: '))
-        second_value = int(input('Введите второе число: '))
-        result = first_value - second_value
-        print(f'Результат вычитания: {result}')
-    except ValueError as error:
-        print('Неверный тип данных!')
+def subtraction(value):   # вычитание
+    result = value[0] - value[1]
+    print(f'Результат вычитания: {result}')
+    
 
 def calculate():
-    action = input('Введите действие, которое хотите выполнить одним из 4 знаков (+ - / * ): ')
-    if action == "+":
-        summation()
-    elif action == "-":
-        subtraction()
-    elif action == "/":
-        division()
-    elif action == "*":
-        multiplication()
-    else:
-        print('Такое действие не поддерживается!')
+    try:
+        first_value = int(input('Введите первое число: '))
+        second_value = int(input('Введите второе число: '))
+        value = (first_value, second_value)
+        action = input('Введите действие, которое хотите выполнить одним из 4 знаков (+ - / * ): ')
+        if action == "+":
+            summation(value)
+        elif action == "-":
+            subtraction(value)
+        elif action == "/":
+            division(value)
+        elif action == "*":
+            multiplication(value)
+        else:
+            print('Такое действие не поддерживается!')
+    except ValueError:
+        print('Неверный тип данных!')
 
 calculate()
