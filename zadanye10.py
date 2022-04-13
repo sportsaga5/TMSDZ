@@ -1,20 +1,20 @@
 # задание 1 (создание калькулятора)
-def division(value):   # деление
+def division(value: tuple) -> str:   # деление
     try:
         result = value[0] / value[1]
         print(f'Результат деления: {result}')
     except ZeroDivisionError as error:
         print(error)
 
-def multiplication(value):  # умножение
+def multiplication(value: tuple) -> str:  # умножение
     result = value[0] * value[1]
     print(f'Результат умножения: {result}')
 
-def summation(value):  # сложение
+def summation(value: tuple) -> str:  # сложение
     result = value[0] + value[1]
     print(f'Результат сложения: {result}')
 
-def subtraction(value):   # вычитание
+def subtraction(value: tuple) -> str:  # вычитание
     result = value[0] - value[1]
     print(f'Результат вычитания: {result}')
     
