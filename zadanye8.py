@@ -18,7 +18,7 @@ parent1 = Parent("Billy", 40)
 print(parent1.say_hello())
 
 # создание класса наследника
-class First_twin(Parent):
+class FirstTwin(Parent):
     """Первый из детей близнецов с игрушкой"""
     def __init__(self, lovely_toy: str, **kwargs):
         self.lovely_toy = lovely_toy
@@ -33,7 +33,7 @@ class First_twin(Parent):
     def __str__(self):
         return f'Это ребёнок с именем: {self.name} и возрастом: {self.age} и любимой игрушкой: {self.lovely_toy}!' # переопределение __str__
 
-class Second_twin(Parent):
+class SecondTwin(Parent):
     """Второй из детей близнецов с хобби"""
     def __init__(self, hobby: str, **kwargs):
         self.hobby = hobby
@@ -49,14 +49,14 @@ class Second_twin(Parent):
         return f'Это ребёнок с именем: {self.name} и возрастом: {self.age} и хобби: {self.hobby}!' # переопределение __str__
 
 # близнец 1
-twin1 = First_twin(
+twin1=FirstTwin(
     name = "Helly",
     age = 10,
     lovely_toy = "машина"
 )
 
 # близнец 2
-twin2 = Second_twin(
+twin2=SecondTwin(
     name = "Selly",
     age = 10,
     hobby = "футбол"
@@ -68,13 +68,13 @@ print(twin1.my_lovely_toy())
 print(twin2.say_hello())
 print(twin2.my_hobby())
 
-class Little_kid(First_twin, Second_twin):
+class Little_kid(FirstTwin, SecondTwin):
     """Младший ребёнок с наследованием от 2 близнецов"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
 # младший брат   
-little_brother = Little_kid(
+little_brother=Little_kid(
     name = "Ben",
     age = 5,
     lovely_toy = "вертолёт",
