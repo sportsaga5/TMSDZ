@@ -68,13 +68,13 @@ print(twin1.my_lovely_toy())
 print(twin2.say_hello())
 print(twin2.my_hobby())
 
-class Little_kid(FirstTwin, SecondTwin):
+class LittleKid(FirstTwin, SecondTwin):
     """Младший ребёнок с наследованием от 2 близнецов"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
 # младший брат   
-little_brother=Little_kid(
+little_brother=LittleKid(
     name = "Ben",
     age = 5,
     lovely_toy = "вертолёт",
