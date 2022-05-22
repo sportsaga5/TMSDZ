@@ -29,3 +29,4 @@ INSERT INTO gamers(name, age, favourite_game_id) VALUES ("Igor", 28, 2);
 
 ----Соединяем таблицы----  Задание 3
 SELECT gamer_id, name, age, G.game_name, G.developer FROM gamers JOIN games G WHERE gamers.favourite_game_id == G.game_id;
+SELECT gamer_id, name, age, G.game_name, G.developer FROM gamers JOIN games G WHERE gamers.favourite_game_id == G.game_id and name = "Gleb";
