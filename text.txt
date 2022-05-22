@@ -1,4 +1,4 @@
-----Создаём 1 таблицу----
+----Создаём 1 таблицу---- Задание 1
 CREATE TABLE games(
     game_id INTEGER PRIMARY KEY,
     game_name TEXT NOT NULL,
@@ -22,10 +22,10 @@ CREATE TABLE gamers(
     FOREIGN KEY (favourite_game_id) REFERENCES games(game_id)
 );
 
-----Добавляем данные в 2 таблицу----
+----Добавляем данные в 2 таблицу----  Задание 2
 INSERT INTO gamers(name, age, favourite_game_id) VALUES ("Gleb", 20, 5);
 INSERT INTO gamers(name, age, favourite_game_id) VALUES ("Denis", 18, 1);
 INSERT INTO gamers(name, age, favourite_game_id) VALUES ("Igor", 28, 2);
 
-----Соединяем таблицы----
+----Соединяем таблицы----  Задание 3
 SELECT gamer_id, name, age, G.game_name, G.developer FROM gamers JOIN games G WHERE gamers.favourite_game_id == G.game_id;
