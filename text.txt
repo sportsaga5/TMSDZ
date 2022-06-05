@@ -1,0 +1,32 @@
+----Создаём 1 таблицу---- Задание 1
+CREATE TABLE games(
+    game_id INTEGER PRIMARY KEY,
+    game_name TEXT NOT NULL,
+    developer TEXT NOT NULL,
+    price INTEGER NOT NULL
+);
+
+----Добавляем данные в 1 таблицу----
+INSERT INTO games(game_name, developer, price) VALUES ("CS:GO", "Valve", 10);
+INSERT INTO games(game_name, developer, price) VALUES ("Dota", "Valve", 0);
+INSERT INTO games(game_name, developer, price) VALUES ("VALORANT", "Riot Games", 0);
+INSERT INTO games(game_name, developer, price) VALUES ("FIFA", "EA", 80);
+INSERT INTO games(game_name, developer, price) VALUES ("The Forest", "Endnight Games Ltd", 7);
+
+----Создаём 2 таблицу----
+CREATE TABLE gamers(
+    gamer_id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    age INTEGER NOT NULL,
+    favourite_game_id TEXT NOT NULL,
+    FOREIGN KEY (favourite_game_id) REFERENCES games(game_id)
+);
+
+----Добавляем данные в 2 таблицу----  Задание 2
+INSERT INTO gamers(name, age, favourite_game_id) VALUES ("Gleb", 20, 5);
+INSERT INTO gamers(name, age, favourite_game_id) VALUES ("Denis", 18, 1);
+INSERT INTO gamers(name, age, favourite_game_id) VALUES ("Igor", 28, 2);
+
+----Соединяем таблицы----  Задание 3
+SELECT gamer_id, name, age, G.game_name, G.developer FROM gamers JOIN games G WHERE gamers.favourite_game_id == G.game_id;
+SELECT gamer_id, name, age, G.game_name, G.developer FROM gamers JOIN games G WHERE gamers.favourite_game_id == G.game_id and name = "Gleb";
