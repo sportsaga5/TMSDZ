@@ -1,0 +1,72 @@
+Задание 1 - реализовать все типы связей между таблицами
+
+Сотрудники:
+CREATE TABLE employees(
+    id INTEGER PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL
+);
+
+Рабочие места:
+CREATE TABLE workplaces(
+    id INTEGER PRIMARY KEY,
+    number TEXT NOT NULL,
+    employee_id INTEGER UNIQUE NOT NULL,
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
+
+Должности:
+CREATE TABLE positions(
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+ONE_TO_ONE
+INSERT INTO employees(first_name, last_name) VALUES ("Gleb", "123");
+INSERT INTO employees(first_name, last_name) VALUES ("Igor", "153");  
+INSERT INTO workplaces(number, employee_id) VALUES ("A5", "1");       
+INSERT INTO workplaces(number, employee_id) VALUES ("A8", "2");  
+
+MANY_TO_MANY:
+Создаём промежуточную таблицу:
+CREATE TABLE employees_positions(
+    id INTEGER PRIMARY KEY,
+    employee_id INTEGER NOT NULL,
+    position_id INTEGER NOT NULL,
+    FOREIGN KEY (employee_id) REFERENCES employees(id),
+    FOREIGN KEY (position_id) REFERENCES positions(id)
+);
+
+INSERT INTO positions(name) VALUES ("engineer");
+INSERT INTO positions(name) VALUES ("manager");
+INSERT INTO employees_positions(employee_id, position_id) VALUES ("1", "1");
+INSERT INTO employees_positions(employee_id, position_id) VALUES ("1", "2");
+INSERT INTO employees_positions(employee_id, position_id) VALUES ("2", "2");
+
+ONE_TO_MANY:
+CREATE TABLE authors(
+id INTEGER PRIMARY KEY,
+first_name TEXT NOT NULL,
+last_name TEXT NOT NULL
+);
+
+CREATE TABLE books(
+book_id INTEGER PRIMARY KEY,
+name TEXT NOT NULL,
+year INTEGER NOT NULL,
+author_id INTEGER NOT NULL,
+FOREIGN KEY (author_id) REFERENCES authors(id)
+);
+
+INSERT INTO authors(first_name, last_name) VALUES ("Author1", "456");
+INSERT INTO authors(first_name, last_name) VALUES ("Author2", "789");
+INSERT INTO books(name, year, author_id) VALUES ("Book1", "1456", 1);
+INSERT INTO books(name, year, author_id) VALUES ("Book2", "1460", 1);
+INSERT INTO books(name, year, author_id) VALUES ("Book3", "1356", 2);
+INSERT INTO books(name, year, author_id) VALUES ("Book4", "1366", 2);
+INSERT INTO books(name, year, author_id) VALUES ("Book5", "1360", 2);
+
+
+Задание 4 - сделать подзапрос с использованием функции
+
+SELECT AVG(year) FROM books WHERE year < 1400;
