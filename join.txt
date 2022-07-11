@@ -1,0 +1,35 @@
+Задание 2 - реализовать все типы JOIN
+
+CREATE TABLE game_types(
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE games(
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    game_type_id INTEGER,
+    FOREIGN KEY (game_type_id) REFERENCES game_types(id)
+);
+
+INSERT INTO game_types(name) VALUES("FPS");
+INSERT INTO game_types(name) VALUES("Fighting");
+INSERT INTO game_types(name) VALUES("Survival");
+INSERT INTO game_types(name) VALUES("BEAT-EM UP");
+
+INSERT INTO games(name, game_type_id) VALUES("Call of Duty", 1);
+INSERT INTO games(name, game_type_id) VALUES("Half-Life", 1);
+INSERT INTO games(name, game_type_id) VALUES("Resident Evil", 3);
+INSERT INTO games(name, game_type_id) VALUES("Mortal Kombat", 2);
+INSERT INTO games(name) VALUES("Dota 2");
+
+INNER JOIN:
+SELECT games.id, games.name, game_types.id, game_types.name FROM games INNER JOIN game_types ON games.game_type_id == game_types.id;
+LEFT JOIN:
+SELECT games.id, games.name, game_types.name FROM game_types LEFT OUTER JOIN games ON games.game_type_id == game_types.id;
+RIGHT JOIN:
+SELECT games.id, games.name, game_types.name FROM games LEFT OUTER JOIN game_types ON games.game_type_id == game_types.id; 
+CROSS JOIN:
+SELECT games.name, game_types.name FROM games CROSS JOIN game_types;
+
+
