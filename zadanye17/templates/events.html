@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+{% for event in events %}
+<div>
+    <p><b>Title:</b> {{ event.title }}</p>
+    <p><b>Content:</b> {{ event.content }}</p>
+    <p><b>Guests amount:</b> {{ event.guests.count() }}</p>
+    
+    {% if event.guests.all() %}
+        <p>Guests:</p>
+        <ul>
+            {% for guest in event.guests.all() %}
+            <li>{{ guest.first_name }} {{ guest.last_name }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    <button type="button"><a href="/events/{{ event.id }}">Open<a></button>
+    <hr>
+</div>
+{% endfor %}
+    
+{% endblock %}
