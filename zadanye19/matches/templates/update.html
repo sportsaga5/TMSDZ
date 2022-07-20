@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Matches</title>
+    </head>
+    <body>
+        <h3><b>Match information: </b></h3>
+        <h3>First team: {{ match.first_team }}</h3>
+        <h3>Second team: {{ match.second_team }}</h3>
+        <h3>Description: {{ match.description }}</h3>
+        <h3><b>Stadium:</b> {{ match.stadium }}</h3>
+        <h3>Start date: {{ match.start_date }}</h3>
+        <hr>
+    
+        <h3>New info:</h3>
+        <form method="put">
+            {% csrf_token %}
+            <h3>Description: <input type="text" name="description" required=""></h3>
+            <h3>Start date: <input type="date" name="start_date" required=""></h3>
+            <button type="submit" style="color: #199600;">Create</button>
+          </form>
+        <hr>
+    
+    
+    </body>
+</html>
